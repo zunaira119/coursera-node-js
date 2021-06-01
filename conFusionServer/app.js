@@ -10,6 +10,7 @@ var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var authenticate = require('./authenticate');
+
 // const url = 'mongodb://localhost:27017/conFusion';
 var config = require('./config');
 const url = config.mongoUrl;
@@ -26,6 +27,7 @@ var usersRouter = require('./routes/users');
 var dishRouter = require('./routes/dishRouter');
 var promotionsRouter = require('./routes/promotionsRouter');
 var leadersRouter = require('./routes/leadersRouter');
+const uploadRouter = require('./routes/uploadRouter');
 
 
 connect.then((db) => {
@@ -94,6 +96,7 @@ app.use('/users', usersRouter);
 app.use('/dishes',dishRouter);
 app.use('/promotions',promotionsRouter);
 app.use('/leaders',leadersRouter);
+app.use('/imageUpload',uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
