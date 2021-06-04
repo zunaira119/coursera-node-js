@@ -28,6 +28,8 @@ var dishRouter = require('./routes/dishRouter');
 var promotionsRouter = require('./routes/promotionsRouter');
 var leadersRouter = require('./routes/leadersRouter');
 const uploadRouter = require('./routes/uploadRouter');
+const favouriteRouter = require('./routes/favouriteRouter');
+var commentRouter = require('./routes/commentsRouter');
 
 
 connect.then((db) => {
@@ -97,7 +99,9 @@ app.use('/dishes',dishRouter);
 app.use('/promotions',promotionsRouter);
 app.use('/leaders',leadersRouter);
 app.use('/imageUpload',uploadRouter);
-
+app.use('/favourites',favouriteRouter);
+app.use('/comments',commentRouter);
+ 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
